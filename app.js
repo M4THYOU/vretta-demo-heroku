@@ -17,12 +17,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Add routes here.
 app.use('/api/games', gamesRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/players', playersRouter);
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // DB Config
 const dbURI = require('./config/keys').mongoURI;

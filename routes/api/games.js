@@ -11,6 +11,9 @@ router.get('/', (req, res, next) => {
     Game.find()
         // .sort({date: -1}) // descending // sorting is done on client side.
         .then(games => {
+            console.log(games);
+            console.log(res);
+            console.log('XXX');
             res.json(games);
         });
 });
