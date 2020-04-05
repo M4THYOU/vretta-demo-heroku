@@ -6,7 +6,7 @@ const router = express.Router();
 // @route GET api/aws/connect/player
 // @desc Get all games.
 // @access Public
-router.get('/connect/player', (req, res, next) => {
+router.get('/connect', (req, res, next) => {
     /*
     Game.find()
         // .sort({date: -1}) // descending // sorting is done on client side.
