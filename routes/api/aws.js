@@ -16,7 +16,7 @@ router.get('/connect/player', (req, res, next) => {
             res.json(games);
         });*/
 
-    res.string(req);
+    res.json(req.request_id);
 
     /*
     const uid = data.userId;
