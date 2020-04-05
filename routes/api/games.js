@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
         .then(games => {
             console.log(games);
             console.log(res);
-            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000/");
             res.json(games);
         });
 });
