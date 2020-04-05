@@ -3,17 +3,75 @@ const router = express.Router();
 
 // const Game = require('../../models/Game');
 
-// @route GET api/games
+// @route GET api/connect/player
 // @desc Get all games.
 // @access Public
 router.get('/', (req, res, next) => {
+    /*
     Game.find()
         // .sort({date: -1}) // descending // sorting is done on client side.
         .then(games => {
             console.log(games);
             console.log(res);
             res.json(games);
-        });
+        });*/
+
+    console.log(req.body);
+    res.json(req.body);
+
+    /*
+    const uid = data.userId;
+    const gameId = data.gameId;
+
+    client.join(gameId);
+
+    // add it to db as socketIds = [uid: client.id]
+    console.log('storing player:', uid, 'from:', gameId);
+    console.log('socketId:', client.id);
+
+    Game.findByIdAndUpdate(gameId, { $addToSet: { players: uid } }, {new: true}, (err, game) => {
+        if (err) {
+            console.log(err);
+        } else {
+            // the user list may be updated, so send it to the coach.
+            const target = game.coachSocketId;
+            client.to(target).emit('newPlayerList', {playerList: game.players});
+
+            // update the player's socketId
+            game.socketIds.set(uid, client.id);
+            console.log('New player socketId:', client.id);
+
+            // check if user has a field in messages. If not, add one.
+            if (typeof game.messages === "undefined") {
+                game.messages = {};
+                game.messages.set(uid, []);
+            } else if (typeof game.messages.get(uid) === "undefined") {
+                game.messages.set(uid, []);
+            }
+
+            game.isActive.set(uid, true);
+            // emit to coach that player._id has connect.
+            client.to(game.coachSocketId).emit('playerChangeConnection', { playerId: uid, isActive: true });
+
+            game.save();
+
+        }
+    });
+
+    const filter = { _id: uid };
+    const update = {
+        socketId: client.id,
+        currentGame: gameId,
+    };
+    Player.findOneAndUpdate(filter, update, {
+        new: true,
+        upsert: true
+    }).then(player => {
+        console.log('Player successfully added/updated.');
+    }).catch(err => {
+        console.log(err);
+    });*/
+
 });
 
 // @route GET api/games/:id
