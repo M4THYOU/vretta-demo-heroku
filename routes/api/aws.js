@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const crypto = require('crypto');
 
-const Game = require('../../models/Game');
+// const Game = require('../../models/Game');
 
 // @route GET api/games
 // @desc Get all games.
@@ -13,7 +12,6 @@ router.get('/', (req, res, next) => {
         .then(games => {
             console.log(games);
             console.log(res);
-            res.setHeader("Access-Control-Allow-Origin", "*");
             res.json(games);
         });
 });
