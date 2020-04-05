@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const gamesRouter = require('./routes/api/games');
 const messagesRouter = require('./routes/api/messages');
 const playersRouter = require('./routes/api/players');
-const awsRouter = require('./routes/api/aws');
 
 const app = express();
 
@@ -24,8 +23,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/games', gamesRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/players', playersRouter);
-
-app.use('/api/aws', awsRouter);
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
