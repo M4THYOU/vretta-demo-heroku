@@ -16,9 +16,11 @@ router.get('/connect/player', (req, res, next) => {
             res.json(games);
         });*/
 
-    console.log("TEST");
     console.log(req);
-    console.log(typeof req);
+    console.log("-------------------");
+    console.log(req.IncomingMessage);
+    console.log("-------------------");
+    console.log(req.body);
     res.json({"test": "test2"});
 
     /*
